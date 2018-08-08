@@ -1,0 +1,12 @@
+@charset "utf-8";
+/* CSS Document */
+
+img, object{
+	max-hieght:100%;
+	max-width:100%;
+}
+plugins, object{
+	max-hieght:100%;
+	max-width:100%;
+}
+

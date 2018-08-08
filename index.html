@@ -1,0 +1,458 @@
+<!doctype html5>
+<html>
+<head>
+
+
+<!--STYLE FOR HOME-->
+<style>
+@font-face {
+    font-family: 'f1'; /*a name to be used later*/
+    src: url('fnt1.ttf'); /*URL to font*/
+}
+@font-face {
+    font-family: 'f2'; /*a name to be used later*/
+    src: url('fnt2.otf'); /*URL to font*/
+}
+html,body{
+   background-image: url('bg2.jpg');
+}
+
+#home{
+  animation: color-me-in 10s;
+  animation-iteration-count:infinite;
+  animation-direction: alternate;
+  
+  background-size: cover;
+  background-position: center;
+ 
+}
+
+
+@keyframes color-me-in {
+  50% {
+    background-image: url('bg1.jpg');
+  }
+  /* Adding a step in the middle */
+  100% {
+   background-image: url('bg2.jpg');
+  }
+}
+
+
+.sodtxt p{
+    text-align: justify;
+    font-family: f2;
+}
+</style>
+<!--END OF HOME STYLE-->
+
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+<script type="text/javascript" src="modernAlert.min.js"></script>
+
+<script type="text/javascript" src="fb.js"></script>
+
+<script src="conn.js" type="text/javascript"></script>
+
+<script src="alertify.js" type="text/javascript"></script>
+<script src="alertify.min.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="alertify.bootstrap.css" />
+<link rel="stylesheet" href="alertify.core.css" />
+<link rel="stylesheet" href="alertify.default.css" />
+<link rel="stylesheet" href="font-awesome.min.css" />
+
+<meta charset="utf-8">
+<title>SOD BOOK- NSCTEQ</title>
+
+<link href="jquery.mobile.theme-1.0.min.css" rel="stylesheet" type="text/css">
+<link href="jquery.mobile.structure-1.0.min.css" rel="stylesheet" type="text/css">
+
+<script src="jquery-1.6.4.min.js" type="text/javascript"></script>
+<script src="jquery.mobile-1.0.min.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="mystyle.css">
+
+<link rel="stylesheet" type="text/css" href="chat.css">
+
+
+<style type="text/css">
+#menu div div div div div table tr td table tr td p {
+	font-weight: bold;
+}
+#menu div div div div div p {
+	font-weight: bold;
+	font-family: "Arial", Times, serif;
+}
+</style>
+
+</head>
+
+<body>
+
+<div data-role="page" id="home" data-theme="a">
+  <div style="text-align: center" data-role="header" data-position="fixed" data-theme="a">
+  <h6>SOD</h6>
+    <div data-role="navbar">
+      <ul>
+        <li><a href="#sodread" data-transition="fade">SOD Book</a></li>
+		<li><a href="#sodvideo" data-transition="fade">Video</a></li>
+		<li><a href="#sodchat" data-transition="fade">SOD Chat</a></li>
+        <li><a href="#about" data-transition="fade">About</a></li>
+      </ul>
+    </div>
+    <a href="#gtes" data-theme="b" data-transition="fade">Give / Read Testimony</a>
+  </div>
+
+
+    <div style="width: 100%; height: 100%; text-align: center; padding-top: 100px">
+
+      <center>
+      <img style="width: auto; text-align: center;" src="sod_header.png">
+        <h4 id="main-title" style="color:yellow; font-family: f2; width:80%; text-align:center; box-shadow:1px 2px 3px black; text-shadow:2px 2px 5px black; font-weight:600; background-color:black; opacity:0.5;">Please wait - Loading</h4>
+  </center>
+
+    </div>
+
+
+  <div data-position="fixed" data-role="footer" data-theme="a">
+	<h6>www.dunamisgospel.org</h6>
+  </div>
+</div>
+
+<div data-role="page" id="sodchat" data-theme="a">
+
+  <div data-role="header"   data-theme="a">
+    <h1>SOD Chat</h1>
+    <!--<h4 id="sod-topic">Please wait....</h4>-->
+    <h6 style="color: yellow; font-size: 10px;" id="istyping">...</h6>
+     <div data-role="navbar">
+     <ul>
+      <li><a href="#home">Home</a></li>
+        <li><a href="#sodvideo">Watch SOD</a></li>
+		<li><a href="#sodread">Read Seeds Of Destiny</a></li>
+     </ul>
+     </div>
+  </div>
+  
+
+ <!--CHAT HERE --> 
+ 
+
+ <div data-theme="a" class="chat">
+      
+      <div style="overflow-y: scroll; width: 100%; position: sticky; height: 380px;" id="chat-box" class="chat-history">
+	   	  
+			  
+      </div> <!-- end chat-history -->
+	  
+	  
+      
+
+      </div> <!-- end chat-message -->
+
+<!--CHATE HERE-->
+
+<div style="width: 100%; position: fixed; bottom: 0;">
+    <textarea style="width: 100%"  name="message-to-send" id="txt_msg" placeholder ="Type your message" rows="2" data-mini="true"></textarea>
+    <button onclick="send_msg()" data-theme="b" style="width: 100%; float: right;">Send >></button>
+</div>
+
+</div>
+
+
+
+<!---SOD Chat--->
+
+<div  data-role="page" id="gtes" data-theme="a">
+  <div data-role="header"   data-theme="a">
+    <h1>New Testimony</h1>
+    <h4 id="topic_date"></h4>
+     <div data-role="navbar">
+     <ul>
+      <li><a href="#home">Home</a></li>
+        <li><a href="#testimony">Testimonies</a></li>
+		   <li><a href="#sodvideo">Watch SOD</a></li>
+     </ul>
+     </div>
+  </div>
+
+  <div id="" data-role="content" data-theme="a">
+
+ <!--SOD HERE -->
+
+ <p id="dandt">Date / Time </p>
+
+ <input type="text" id="tname" autocomplete="off" placeholder="Testifier Name" />
+ <textarea id="ttext" cols="30" rows="15" placeholder="Type your testimony"></textarea>
+ <a data-role="button" onclick="subTes()">Submit for approval</a>
+<!--END HERE-->
+  </div>
+
+     <div data-role="footer" data-position="fixed"  data-theme="a">
+         <h6>www.dunamisgospel.org</h6>
+  </div>
+
+</div>
+
+
+
+
+<!---SOD Chat--->
+
+<div  data-role="page" id="sodread" data-theme="a">
+  <div data-role="header"   data-theme="a">
+    <h1>SOD Book</h1>
+    <h4 id="topic_date"></h4>
+     <div data-role="navbar">
+     <ul>
+      <li><a href="#home">Home</a></li>
+        <li><a href="#sodchat">Chat Now</a></li>
+		   <li><a href="#sodvideo">Watch SOD</a></li>
+     </ul>
+     </div>
+  </div>
+
+  <div id="rdsod" data-role="content" data-theme="a">
+
+ <!--SOD HERE -->
+
+
+<!--END HERE-->
+  </div>
+
+     <div data-role="footer" data-position="fixed"  data-theme="a">
+         <h6>www.dunamisgospel.org</h6>
+  </div>
+
+</div>
+
+
+
+
+<!--SOD VIDEO-->
+<div data-role="page" id="sodvideo" data-theme="a">
+  <div data-role="header"   data-theme="a">
+    <h1>WATCH SOD Videos</h1>
+     <div data-role="navbar">
+     <ul>
+      <li><a href="#home">Home</a></li>
+        <li><a href="#sodread">Read Seeds Of Destiny</a></li>
+     </ul>
+     </div>
+  </div>
+
+  <div id="rdsod" data-role="content" data-theme="a">
+
+ <!--SOD VIDEO HERE HERE -->
+
+<iframe id="video" width="100%" src="https://www.youtube.com/embed/videoseries?list=UUrDg-KgwTtv88H32I4KEZcw&hl=en_US" frameborder="0" allowfullscreen></iframe>
+
+<center><h4 style="width: 100%;" id="sod-topic">Please wait....</h4>
+    <button onclick="$('#video')[0].src += '&autoplay=1';">Watch Now</button>
+</center>
+
+<center>
+    <button onclick="window.location.href='#testimony'">Read Testimonies</button>
+</center>
+
+<!--END VIDEO HERE-->
+  </div>
+
+
+  <div data-role="footer" data-position="fixed"  data-theme="a">
+         <h6>www.dunamisgospel.org</h6>
+  </div>
+
+</div>
+
+
+
+
+<div data-role="page" id="testimony" data-theme="a">
+  <div data-role="header"   data-theme="a">
+    <h1>Testimonies</h1>
+     <div data-role="navbar">
+     <ul>
+      <li><a href="#home">Home</a></li>
+        <li><a href="#sodread">Read Seeds Of Destiny</a></li>
+     </ul>
+     </div>
+           <a href="#gtes" data-theme="b" data-transition="fade" data-role="button">Give Testimony</a>
+  </div>
+
+  <div id="rdtes" data-role="content" data-theme="a">
+
+ <!--SOD TEST HERE HERE -->
+
+
+
+<!--END VIDEO HERE-->
+  </div>
+
+
+  <div data-role="footer" data-position="fixed"  data-theme="a">
+        <h6>www.dunamisgospel.org</h6>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+<div data-role="dialog" id="about"  data-theme="a">
+  <div data-role="header" data-theme="a">
+    <h1>About</h1>
+  </div>
+  <div style="text-align: center" data-role="content">
+
+  <h3>SOD Mobile App</h3>
+  <h4>Powered by: DIGC Abuja</h4>
+
+   <h3>Launched</h3>
+  <h4>2017</h4>
+
+   <h3>Developed by</h3>
+  <h4>Revelation</h4>
+
+   <h3>Based Teqnology of:</h3>
+  <h4>NSCTEQ Community</h4>
+
+  <h3>Contact:</h3>
+  <h4>email: nusktecsoft@gmail.com</h4>
+  <h4>phone: +234 (0)8164242320</h4>
+  </div>
+  <div data-role="footer" data-position="fixed"  data-theme="a">
+    <h4><img style="width: 28px;" src="sodbook.png"></h4>
+  </div>
+</div>
+
+</body>
+
+<script>
+
+/*
+modernAlert({
+                backgroundColor: '#fff',
+                color: '#555',
+                borderColor: '#ccc',
+                titleBackgroundColor: '#2B547E',
+                titleColor: '#fff',
+                defaultButtonsText: {ok : 'Ok', cancel : 'Cancel'},
+                overlayColor: 'rgba(0, 0, 0, 0.5)',
+                overlayBlur: 2 //Set false to disable it or interger for pixle
+            });
+*/
+
+$('document').ready(function(){
+    alertify.success("Successfully Loaded !");
+});
+
+alertify.success("Seeds of destiny loading...");
+
+var topic_use = "";
+var date_use = "";
+ 
+var tt = $.post("http://dunamisgospel.org/mobile-sod/ios/read.php", {tmp: ""}, function(data){
+	var s = data;
+	$('#main-title').text(s.split("::::")[0]+"\n\n-"+s.split("::::")[1].split(" ")[0]);
+	$('#sod-topic').text(s.split("::::")[0]);
+	//set global data
+	date_use = s.split("::::")[1].split(" ")[0];
+	topic_use = s.split("::::")[0];
+	
+	$('#topic_date').text(topic_use+"\n\n"+date_use);
+	
+	document.getElementById('chat-header-title').innerHTML=topic_use;
+	
+	$('#sod-date').text(s.split("::::")[1].split(" ")[0]);
+});
+
+tt.fail(function(data){
+alertify.alert('It seems you have a weak network signal or no data enabled !');
+	});
+
+
+$(document).ready(function(e) {
+ function getRandomArbitrary(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+var rd = $.post("http://dunamisgospel.org/mobile-sod/ios/read.php", {rdall2: ""}, function(data){
+$("body").append(data);
+});
+
+
+var rd = $.post("http://dunamisgospel.org/mobile-sod/ios/read.php", {rdall: ""}, function(data){
+    var filter_data = "<ul data-role='listview'>"+data+"</ul>";
+	$('#rdsod').append(filter_data);
+});
+
+
+rd.fail(function(e){alertify.error('Unable to fetch seeds of destiny data, try again !');});
+
+var n = getRandomArbitrary(1,4);
+
+if(n==1){
+	$('#home').css("background-image", "url(bg1.jpg");
+	}
+if(n==2){
+$('#home').css("background-image", "url(bg2.jpg");
+	}
+if(n==3){
+$('#home').css("background-image", "url(bg2.jpg");
+	}
+});//$('#home').css("background-image", "url(bg.png");
+
+
+</script>
+
+<script src="chat.js" type="text/javascript"></script>
+
+<script>
+var dandt ="";
+var rootRef = firebase.database().ref();
+var urlRef = rootRef.child("testimonies");
+urlRef.once("value", function(snapshot) {
+  snapshot.forEach(function(child) {
+    //console.log(child.key+": "+child.child("content").val());
+
+   if(child.child('approval').val()==true){
+   
+    var data = "<div data-role='collapsible'><h4>"+child.key.toString().toUpperCase()+"<br>"+child.child("date").val()+"</h4><p>"+child.child("content").val()+"</p></div>";
+
+    $("#rdtes").append(data);
+   
+   }
+
+  });
+});
+
+//show data and time
+setInterval(function(){
+    var now = new Date();
+    $("#dandt").text(now.toUTCString());
+    dandt=now.toUTCString();
+},500);
+
+function subTes(){
+    var tname = $("#tname").val();
+    var ttxt = $("#ttext").val();
+
+    if(tname==""&&ttxt==""){
+        alertify.error("No testifier name / testimony");
+        return;
+    }
+
+    rootRef.child("testimonies").child(tname).child("approval").set(false);
+    rootRef.child("testimonies").child(tname).child("content").set(ttxt);
+    rootRef.child("testimonies").child(tname).child("date").set(dandt);
+
+    alertify.alert("Your testimony has been submitted for approval, God bless you !");
+    $("#tname").val("");
+    $("#ttext").val("");
+}
+</script>
+</html>
